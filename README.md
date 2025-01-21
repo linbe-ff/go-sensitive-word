@@ -1,12 +1,11 @@
 # go-sensitive-word
-English | [简体中文](https://github.com/linbe-ff/go_study/blob/main/README_zh_cn.md)
+English | [简体中文](https://github.com/linbe-ff/go-sensitive-word/blob/main/README_zh_cn.md)
 ```
 Specific usage:
     When starting a project, first load sensitive words from the database or file into memory, and then you can use sensitive word detection
     To modify or delete sensitive words in the database, the corresponding Updating Old Word method and Deleting Word method need to be called
 ```
-## sensitive-word
-    Sensitive word detection module.
+
 ### 性能
 ```
 1、When the string is "今夜总会想起你夜总最淫官员" and repeated 10,000 times using strings.Repeat, the performance is as follows:

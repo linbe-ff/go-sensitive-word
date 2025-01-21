@@ -1,13 +1,11 @@
 # go-sensitive-word
-[English](https://github.com/linbe-ff/go_study/blob/main/README.md) | 简体中文
+[English](https://github.com/linbe-ff/go-sensitive-word/blob/main/README.md) | 简体中文
 ```
 具体使用：
     在启动项目的时候，先将数据库中或者文件中的敏感词加载到内存中，然后就可以使用敏感词检测了
     数据库修改或者删除敏感词，需要调用对应的 UpdateOldWord 方法、DeleteWord 方法
 ```
 
-## sensitive-word
-    敏感词检测
 ### 性能
 ```
 1、当字符串为：今夜总会想起你夜总最淫官员，并且用strings.Repeat重复10000次的性能如下
