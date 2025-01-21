@@ -6,7 +6,7 @@ Specific usage:
     To modify or delete sensitive words in the database, the corresponding Updating Old Word method and Deleting Word method need to be called
 ```
 
-### 性能
+### performance
 ```
 1、When the string is "今夜总会想起你夜总最淫官员" and repeated 10,000 times using strings.Repeat, the performance is as follows:
     text      = strings.Repeat("今夜总会想起你夜总", 10000) + "最淫官员"
