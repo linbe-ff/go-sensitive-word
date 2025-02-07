@@ -2,6 +2,7 @@ package sensitive_word
 
 import (
 	"errors"
+	"sync"
 	"unicode"
 )
 
@@ -85,6 +86,19 @@ func (d *DFA) DeleteWord(word string) bool {
 
 	// 调用递归函数删除指定的词
 	return deleteNode(d.Root, 0)
+}
+
+// DeleteWordBatch delete word batch
+func (d *DFA) DeleteWordBatch(words []string) {
+	wg := sync.WaitGroup{}
+	for _, word := range words {
+		wg.Add(1)
+		go func() {
+			d.DeleteWord(word)
+			wg.Done()
+		}()
+	}
+	wg.Wait()
 }
 
 // Filter the input text and replace sensitive words

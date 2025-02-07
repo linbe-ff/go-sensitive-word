@@ -8,26 +8,6 @@ import (
 	"testing"
 )
 
-// 简单测试
-func TestDFAFilter(t *testing.T) {
-	dfaT := NewDFA()
-	// 添加敏感词
-	dfaT.AddWord("色情")
-	dfaT.AddWord("夜总会")
-	dfaT.AddWord("夜总")
-	dfaT.AddWord("政治")
-
-	// 输入文本
-	text2 := "今*夜*总*会*想*起*你*夜**总"
-	fmt.Println(dfaT.Filter(text2, true))
-	err := dfaT.Check(text2, true)
-	if err == nil {
-		t.Error("期望得到错误，但实际上没有收到")
-	} else {
-		fmt.Println("捕获到错误:", err)
-	}
-}
-
 // 定义结构体来映射 JSON 数据
 type Data struct {
 	IllegalKeywords []string `json:"illegalKeywords"`
@@ -68,6 +48,15 @@ func BenchmarkDFAFilterAll(b *testing.B) {
 	} else {
 		fmt.Println("捕获到错误:", err)
 	}
+	//cmd: go test -bench=BenchmarkDFAFilterAll
+	//BenchmarkDFAFilterAll-12        捕获到错误: 包含敏感词: 最淫官员
+	//捕获到错误: 包含敏感词: 最淫官员
+	//捕获到错误: 包含敏感词: 最淫官员
+	//捕获到错误: 包含敏感词: 最淫官员
+	//捕获到错误: 包含敏感词: 最淫官员
+	//1000000000               0.0000965 ns/op
+	//PASS
+	//ok      sensitive_word  0.186s
 }
 
 func BenchmarkDFAFilterForr(b *testing.B) {
@@ -78,6 +67,15 @@ func BenchmarkDFAFilterForr(b *testing.B) {
 			return
 		}
 	}
+	// cmd: go test -bench=BenchmarkDFAFilterForr
+	//BenchmarkDFAFilterAll-12        捕获到错误: 包含敏感词: 最淫官员
+	//捕获到错误: 包含敏感词: 最淫官员
+	//捕获到错误: 包含敏感词: 最淫官员
+	//捕获到错误: 包含敏感词: 最淫官员
+	//捕获到错误: 包含敏感词: 最淫官员
+	//1000000000               0.0000965 ns/op
+	//PASS
+	//ok      sensitive_word  0.186s
 }
 
 func BenchmarkDFAFilterReplace(b *testing.B) {
